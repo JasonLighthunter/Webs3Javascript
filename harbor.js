@@ -6,7 +6,6 @@ function Harbor(helper, board) {
   self.ships = self.aHelp.getShips();
   self.verticalModeOn = false;
   self.placedShips = [];
-  self.shipsSent = false;
 
   self.fillShipsJSON = function (shipObjectArray) {
     var shipsJSON = {
