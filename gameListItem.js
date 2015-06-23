@@ -29,6 +29,7 @@ function GameListItem(listItem, gameList) {
           self.game.loadGame();
         } else {
           alert('not your turn.');
+          $('.gameListItem').removeClass('currentGame');
         }
         break;
       case 'done':
