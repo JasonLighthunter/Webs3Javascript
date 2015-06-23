@@ -46,8 +46,12 @@ function GameList(helper) {
     var deleteButton = $('<button>');
     deleteButton.text('Delete all Games');
     deleteButton.on('click', function (root) {
-      self.aHelp.deleteGames();
-      refresh(root);
+      if (confirm('Are you sure you want to delete all games?')) {
+        self.aHelp.deleteGames();
+        $('.harbor').empty();
+        $('.board').empty();
+        refresh(root);
+      }
     });
     deleteButton.appendTo(root);
   };
