@@ -13,7 +13,7 @@ function GameListItem(listItem, gameList) {
   self.createGameListItem = function () {
     var gameListItemDiv = $('<button>');
     gameListItemDiv.addClass('gameListItem');
-    gameListItemDiv.text('ID: ' + self.id + ' status: ' + self.status + ' opponent: ' + self.enemyName + ' yourTurn: ' + self.yourTurn);
+    gameListItemDiv.text('ID: ' + self.id + ' status: ' + self.status + ' opponent: ' + self.enemyName);
     gameListItemDiv.on('click', function () {
       $('.gameListItem').removeClass('currentGame');
       gameListItemDiv.addClass('currentGame');
