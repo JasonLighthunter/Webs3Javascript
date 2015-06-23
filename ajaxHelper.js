@@ -86,6 +86,7 @@ function AjaxHelper() {
   };
   //POSTS
   self.postGameByID = function (ID, shipsJSON) {
+    var result;
     $.ajax({
       type: 'POST',
       url: self.server + '/games/' + ID + '/gameboards?token=' + self.token,
@@ -94,8 +95,9 @@ function AjaxHelper() {
       async: false
     })
       .done(function (json) {
-        alert(json);
+        result = json;
       });
+    return result;
   };
   self.postShot = function (gameID, shotJSON) {
     $.ajax({

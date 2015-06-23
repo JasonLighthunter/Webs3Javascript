@@ -15,26 +15,21 @@ function GameList(helper) {
       tempGameListItemDiv.appendTo(root);
     }
   };
-
-  self.refresh = function (root) {
+  var refresh = function (root) {
+    console.log('yay');
     $('.gameListItem').remove();
     self.drawActiveGames(root);
   };
-  self.delete = function (root) {
-    self.aHelp.deleteGames();
-    self.refresh(root);
-  };
-
   self.drawNewGameButton = function (root) {
     var newGameButton = $('<button>');
     newGameButton.text('New Game');
     newGameButton.on('click', function () {
       if (confirm('Do you want to play PvE')) {
         self.aHelp.getNewGamePvE();
-        self.refresh(root);
+        refresh(root);
       } else if (confirm('Do you want to play PvP')) {
-        self.aHelp.getNewGamePvE();
-        self.refresh(root);
+        self.aHelp.getNewGamePvP();
+        refresh(root);
       }
     });
     newGameButton.appendTo(root);
@@ -42,19 +37,25 @@ function GameList(helper) {
   self.drawRefreshButton = function (root) {
     var refreshButton = $('<button>');
     refreshButton.text('refresh');
-    refreshButton.on('click', self.refresh(root));
+    refreshButton.on('click', function () {
+      refresh(root);
+    });
     refreshButton.appendTo(root);
   };
   self.drawDeleteButton = function (root) {
     var deleteButton = $('<button>');
     deleteButton.text('Delete all Games');
-    deleteButton.on('click', self.delete(root));
+    deleteButton.on('click', function (root) {
+      self.aHelp.deleteGames();
+      refresh(root);
+    });
     deleteButton.appendTo(root);
   };
   self.draw = function () {
     var root = $('.gamesList');
     self.drawActiveGames(root);
     self.drawNewGameButton(root);
+    self.drawDeleteButton(root);
     self.drawRefreshButton(root);
   };
 }

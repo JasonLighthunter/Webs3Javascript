@@ -1,5 +1,5 @@
 /*global
-  confirm, alert, location
+  confirm,
 */
 function Square(xCor, yCor, game) {
   var self = this;
