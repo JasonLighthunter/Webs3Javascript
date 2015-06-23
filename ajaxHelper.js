@@ -3,7 +3,8 @@
 */
 function AjaxHelper() {
   var self = this;
-  self.server = 'https://zeeslagavans.herokuapp.com';
+  //self.server = 'https://zeeslagavans.herokuapp.com';
+  self.server = 'https://zeeslagavans2.herokuapp.com';
   self.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.Impwd2N1cHBlQGF2YW5zLm5sIg.azkuxjusyj-3r0a32fV6_knhfQJ02CxN3ZDiA26Ovpc';
 
   self.getGames = function () {
