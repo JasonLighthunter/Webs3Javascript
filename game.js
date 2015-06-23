@@ -17,6 +17,5 @@ function Game(gameJSON, gameListItem) {
     self.harbor = new Harbor(self.aHelp, self.board);
     self.board.draw();
     self.harbor.draw();
-    //self.harbor.postShips(self.aHelp);
   };
 }

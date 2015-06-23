@@ -19,7 +19,11 @@ function Square(xCor, yCor, game) {
         if (confirm('Do you want to Shoot?')) {
           self.shoot(self.x, self.y);
         }
-      }
+      } else if (self.status === "setup") {
+        if(confirm('Do you want to place a ship here?')) {
+          self.game.harbor.placeShip(self.x, self.y);
+        }
+      };
     });
     return squareDiv;
   };

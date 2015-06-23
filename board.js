@@ -44,49 +44,47 @@ function Board(gameBoardJSON, game) {
     }
   };
 
-  //currently unused
-  self.addShips = function () {
-    var curShip, i, j, temp;
+  //still unused
+  self.addShip = function (length, isVertical, xCor, yCor) {
+    var j, temp;
+    var addShiptoSquares = function () {
+      $('.' + xCor + yCor).addClass("hasShip");
+      if (isVertical) {
+        for (j = 0; j < length; j++) {
+          $('.' + xCor + (yCor + j)).addClass("hasShip");
+        }
+      } else {
+        for (j = 0; j < length; j++) {
+          temp = self.letters[(self.letters.indexOf(xCor) + j)];
+          $('.' + temp + yCor).addClass("hasShip");
+        }
+      }
+    };
     var checkIfEmpty = function () {
       var squareToCheck;
-      if (curShip.isVertical) {
-        for (j = 0; j < curShip.length; j++) {
-          squareToCheck = $('.' + curShip.startCell.x + (curShip.startCell.y + j));
-          if ((squareToCheck.hasClass("hasShip"))) {
+      if (isVertical) {
+        for (j = 0; j < length; j++) {
+          squareToCheck = $('.' + xCor + (yCor + j));
+          if (squareToCheck.hasClass("hasShip") || squareToCheck.length === 0) {
             return false;
           }
         }
       } else {
-        for (j = 0; j < curShip.length; j++) {
-          temp = self.letters[(self.letters.indexOf(curShip.startCell.x) + j)];
-          squareToCheck = $('.' + temp + curShip.startCell.y);
-          if ((squareToCheck.hasClass("hasShip"))) {
+        for (j = 0; j < length; j++) {
+          temp = self.letters[(self.letters.indexOf(xCor) + j)];
+          squareToCheck = $('.' + temp + yCor);
+          if (squareToCheck.hasClass("hasShip") || squareToCheck.length === 0) {
             return false;
           }
         }
       }
       return true;
     };
-    var addShipstoSquares = function () {
-      $('.' + curShip.startCell.x + curShip.startCell.y).addClass("hasShip");
-      if (curShip.isVertical) {
-        for (j = 0; j < curShip.length; j++) {
-          $('.' + curShip.startCell.x + (curShip.startCell.y + j)).addClass("hasShip");
-        }
-      } else {
-        for (j = 0; j < curShip.length; j++) {
-          temp = self.letters[(self.letters.indexOf(curShip.startCell.x) + j)];
-          $('.' + temp + curShip.startCell.y).addClass("hasShip");
-        }
-      }
-    };
-    for (i = 0; i < self.ships.length; i++) {
-      curShip = self.ships[i];
-      if (checkIfEmpty()) {
-        addShipstoSquares();
-      } else {
-        alert("Ships could not be placed");
-      }
+    if (!checkIfEmpty()) {
+      alert("Ship could not be placed try changing orientation or location of first part of the ship.");
+      return false;
     }
+    addShiptoSquares();
+    return true;
   };
 }

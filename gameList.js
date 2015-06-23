@@ -29,7 +29,10 @@ function GameList(helper) {
     var newGameButton = $('<button>');
     newGameButton.text('New Game');
     newGameButton.on('click', function () {
-      if (confirm('Are you sure?')) {
+      if (confirm('Do you want to play PvE')) {
+        self.aHelp.getNewGamePvE();
+        self.refresh(root);
+      } else if (confirm('Do you want to play PvP')) {
         self.aHelp.getNewGamePvE();
         self.refresh(root);
       }
@@ -38,7 +41,7 @@ function GameList(helper) {
   };
   self.drawRefreshButton = function (root) {
     var refreshButton = $('<button>');
-    refreshButton.text('refesh');
+    refreshButton.text('refresh');
     refreshButton.on('click', self.refresh(root));
     refreshButton.appendTo(root);
   };

@@ -1,17 +1,12 @@
 function Harbor(helper, board) {
   var self = this;
+  self.selectedShip = null;
   self.board = board;
   self.aHelp = helper;
   self.ships = self.aHelp.getShips();
   self.verticalModeOn = false;
   self.placedShips = [];
 
-  self.alterShipObjectArray = function (id, xCor, yCor) {
-    var i;
-    for (i = 0; i < self.ships.length; i++) {
-      console.log(self.ships[i] + id + xCor + yCor);
-    }
-  };
   self.fillShipsJSON = function (shipObjectArray) {
     var shipsJSON = {
       "ships": shipObjectArray
@@ -19,21 +14,37 @@ function Harbor(helper, board) {
     return shipsJSON;
   };
 
+  self.placeShip = function (xCor, yCor) {
+    if (self.board.addShip(self.selectedShip.length, self.verticalModeOn, xCor, yCor)) {
+      var newShipObject = {
+        "_id": self.selectedShip.id,
+        "length": self.selectedShip.length,
+        "name": self.selectedShip.name,
+        "startCell" : { "x": xCor, "y": yCor},
+        "isVertical" : self.verticalModeOn,
+        "__v": self.selectedShip.v
+      };
+      self.placedShips.push(newShipObject);
+      $('.selected').remove();
+      $('.ship:last').click();
+      var counter = 0;
+      $('.ship').each(function () {
+        counter++;
+      });
+      if (counter === 0) {
+        self.aHelp.postGameByID(self.board.game.id, self.fillShipsJSON(self.placedShips));
+      }
+    }
+  };
   self.drawShipsinHarbor = function (root) {
-    var i, curShip, tempShipDiv;
-    console.log('yay');
-    var selectShip = function () {
-      $('.ship').removeClass();
-      tempShipDiv.addClass('selected');
-    };
+    var i, curShip, tempShip, tempShipButton;
     for (i = 0; i < self.ships.length; i++) {
       curShip = self.ships[i];
-      tempShipDiv = $('<button>');
-      tempShipDiv.text('The ' + curShip.name + '; length: ' + curShip.length);
-      tempShipDiv.addClass('ship ' + curShip.id);
-      tempShipDiv.on('click', selectShip());
-      tempShipDiv.appendTo(root);
+      tempShip = new Ship(self, curShip.name, curShip.length, curShip._id, curShip.__v);
+      tempShipButton = tempShip.create();
+      tempShipButton.appendTo(root);
     }
+    $('.ship:last').click();
   };
 
   self.drawVerticalModeToggle = function (root) {
