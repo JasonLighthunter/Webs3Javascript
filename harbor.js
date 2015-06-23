@@ -6,6 +6,7 @@ function Harbor(helper, board) {
   self.ships = self.aHelp.getShips();
   self.verticalModeOn = false;
   self.placedShips = [];
+  self.shipsSent = false;
 
   self.fillShipsJSON = function (shipObjectArray) {
     var shipsJSON = {
@@ -15,24 +16,27 @@ function Harbor(helper, board) {
   };
 
   self.placeShip = function (xCor, yCor) {
-    if (self.board.addShip(self.selectedShip.length, self.verticalModeOn, xCor, yCor)) {
-      var newShipObject = {
-        "_id": self.selectedShip.id,
-        "length": self.selectedShip.length,
-        "name": self.selectedShip.name,
-        "startCell" : { "x": xCor, "y": yCor},
-        "isVertical" : self.verticalModeOn,
-        "__v": self.selectedShip.v
-      };
-      self.placedShips.push(newShipObject);
-      $('.selected').remove();
-      $('.ship:last').click();
-      var counter = 0;
-      $('.ship').each(function () {
-        counter++;
-      });
-      if (counter === 0) {
-        self.aHelp.postGameByID(self.board.game.id, self.fillShipsJSON(self.placedShips));
+    if (!(self.selectedShip === null)) {
+      if (self.board.addShip(self.selectedShip.length, self.verticalModeOn, xCor, yCor)) {
+        var newShipObject = {
+          "_id": self.selectedShip.id,
+          "length": self.selectedShip.length,
+          "name": self.selectedShip.name,
+          "startCell" : { "x": xCor, "y": yCor},
+          "isVertical" : self.verticalModeOn,
+          "__v": self.selectedShip.v
+        };
+        self.placedShips.push(newShipObject);
+        $('.selected').remove();
+        $('.ship:last').click();
+        var counter = 0;
+        $('.ship').each(function () {
+          counter++;
+        });
+        if (counter === 0) {
+          self.aHelp.postGameByID(self.board.game.id, self.fillShipsJSON(self.placedShips));
+          self.selectedShip = null;
+        }
       }
     }
   };
