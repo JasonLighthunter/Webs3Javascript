@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Big Octo</title>
+		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+		<style>
+			.gamesList, .harbor{
+				float: left;
+				width: 200px;
+				background: gray;
+				font-weight: bold;
+			}
+			.gameListItem{
+				background: green;
+			}
+			button{
+				margin-top: 3px;
+				margin-left: 6px;
+				margin-bottom: 3px;
+				font-weight: bold;
+			}
+			.board{
+				width: 500px;
+				height: 500px;
+				float: left;
+			}
+			.selected{
+				color: red;
+			}
+			.square{
+				width: 47px;
+				height: 47px;
+				margin-top: 3px;
+				margin-left: 3px;
+    			background: blue;
+    			float: left;
+			}
+			.isShot{
+				background: yellow;
+			}
+			.hasShip{
+				background: red;
+			}
+			.currentGame{
+				color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="gamesList"></div>
+		<div class="game">
+			<div class="harbor"></div>
+			<div class="board"></div>
+		</div>
+		<script src="harbor.js"></script>
+		<script src="square.js"></script>
+		<script src="board.js"></script>
+		<script src="gameListItem.js"></script>
+		<script src="gameList.js"></script>
+		<script src="ajaxHelper.js"></script>
+		<script src="game.js"></script>
+		<script src="battleShips.js"></script>
+	</body>
+</html>
