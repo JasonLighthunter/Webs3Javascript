@@ -109,6 +109,21 @@ function AjaxHelper() {
       async: false,
     })
       .done(function (json) {
+        if(json === "BOOM")
+        {
+          var sound = new Audio("music/Kerboom.wav");
+          sound.play();
+        }
+        else if(json === "SPLASH" || json ==="FAIL")
+        {
+          var sound = new Audio("music/Sploosh.wav");
+          sound.play();
+        }
+        else if(json === "WINNER")
+        {
+          var sound = new Audio("music/HoorayYay.wav");
+          sound.play();
+        }
         alert(json);
       });
   };
