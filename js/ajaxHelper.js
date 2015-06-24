@@ -92,10 +92,7 @@ function AjaxHelper() {
       data: shipsJSON,
       global: false,
       async: false
-    })
-      .done(function (json) {
-        alert(json);
-      });
+    });
   };
   self.postShot = function (gameID, shotJSON) {
     $.ajax({
@@ -106,22 +103,19 @@ function AjaxHelper() {
       async: false,
     })
       .done(function (json) {
-        if(json === "BOOM")
-        {
-          var sound = new Audio("music/Kerboom.wav");
+        var sound;
+        if (json === "BOOM") {
+          sound = new Audio("music/Kerboom.wav");
           sound.play();
-        }
-        else if(json === "SPLASH" || json ==="FAIL")
-        {
-          var sound = new Audio("music/Sploosh.wav");
+        } else if (json === "SPLASH" || json === "FAIL") {
+          sound = new Audio("music/Sploosh.wav");
           sound.play();
-        }
-        else if(json === "WINNER")
-        {
-          var sound = new Audio("music/HoorayYay.wav");
+        } else if (json === "WINNER") {
+          sound = new Audio("music/HoorayYay.wav");
           sound.play();
           alert(json);
         }
+        console.log('test');
       });
   };
 }

@@ -31,6 +31,7 @@ function Harbor(helper, board) {
         var counter = 0;
         $('.ship').each(function () {
           counter++;
+          console.log('test');
         });
         if (counter === 0) {
           self.aHelp.postGameByID(self.board.game.id, self.fillShipsJSON(self.placedShips));

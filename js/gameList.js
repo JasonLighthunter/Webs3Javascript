@@ -16,7 +16,6 @@ function GameList(helper) {
     }
   };
   var refresh = function (root) {
-    console.log('yay');
     $('.gameListItem').remove();
     self.drawActiveGames(root);
   };
@@ -37,7 +36,7 @@ function GameList(helper) {
   self.drawRefreshButton = function (root) {
     var refreshButton = $('<button>');
     refreshButton.text('refresh');
-    refreshButton.addClass('refresh')
+    refreshButton.addClass('refresh');
     refreshButton.on('click', function () {
       refresh(root);
     });
