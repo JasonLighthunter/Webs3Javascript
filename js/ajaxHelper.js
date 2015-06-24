@@ -3,8 +3,7 @@
 */
 function AjaxHelper() {
   var self = this;
-  //self.server = 'https://zeeslagavans.herokuapp.com';
-  self.server = 'https://zeeslagavans2.herokuapp.com';
+  self.server = 'https://zeeslagavans.herokuapp.com';
   self.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.Impwd2N1cHBlQGF2YW5zLm5sIg.azkuxjusyj-3r0a32fV6_knhfQJ02CxN3ZDiA26Ovpc';
 
   self.getGames = function () {
@@ -87,7 +86,6 @@ function AjaxHelper() {
   };
   //POSTS
   self.postGameByID = function (ID, shipsJSON) {
-    var result;
     $.ajax({
       type: 'POST',
       url: self.server + '/games/' + ID + '/gameboards?token=' + self.token,
@@ -96,9 +94,8 @@ function AjaxHelper() {
       async: false
     })
       .done(function (json) {
-        result = json;
+        alert(json);
       });
-    return result;
   };
   self.postShot = function (gameID, shotJSON) {
     $.ajax({
@@ -109,18 +106,22 @@ function AjaxHelper() {
       async: false,
     })
       .done(function (json) {
-        var sound;
-        if (json === "BOOM") {
-          sound = new Audio("music/Kerboom.wav");
-          sound.play();
-        } else if (json === "SPLASH" || json === "FAIL") {
-          sound = new Audio("music/Sploosh.wav");
-          sound.play();
-        } else if (json === "WINNER") {
-          sound = new Audio("music/HoorayYay.wav");
+        if(json === "BOOM")
+        {
+          var sound = new Audio("music/Kerboom.wav");
           sound.play();
         }
-        alert(json);
+        else if(json === "SPLASH" || json ==="FAIL")
+        {
+          var sound = new Audio("music/Sploosh.wav");
+          sound.play();
+        }
+        else if(json === "WINNER")
+        {
+          var sound = new Audio("music/HoorayYay.wav");
+          sound.play();
+          alert(json);
+        }
       });
   };
 }

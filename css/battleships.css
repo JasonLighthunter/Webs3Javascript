@@ -1,0 +1,41 @@
+.gamesList, .harbor{
+	float: left;
+	width: 220px;
+	background: black;
+	font-weight: bold;
+}
+.gameListItem{
+	background: green;
+}
+button{
+	margin-top: 3px;
+	margin-left: 6px;
+	margin-bottom: 3px;
+	margin-right: 6px;
+	font-weight: bold;
+}
+.board{
+	width: 500px;
+	height: 500px;
+	float: left;
+}
+.selected{
+	color: red;
+}
+.square{
+	width: 47px;
+	height: 47px;
+	margin-top: 3px;
+	margin-left: 3px;
+	background: blue;
+	float: left;
+}
+.isShot{
+	background: yellow;
+}
+.hasShip{
+	background: red;
+}
+.currentGame{
+	color: yellow;
+}

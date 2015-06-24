@@ -3,49 +3,7 @@
 	<head>
 		<title>Big Octo</title>
 		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
-		<style>
-			.gamesList, .harbor{
-				float: left;
-				width: 220px;
-				background: black;
-				font-weight: bold;
-			}
-			.gameListItem{
-				background: green;
-			}
-			button{
-				margin-top: 3px;
-				margin-left: 6px;
-				margin-bottom: 3px;
-				margin-right: 6px;
-				font-weight: bold;
-			}
-			.board{
-				width: 500px;
-				height: 500px;
-				float: left;
-			}
-			.selected{
-				color: red;
-			}
-			.square{
-				width: 47px;
-				height: 47px;
-				margin-top: 3px;
-				margin-left: 3px;
-    			background: blue;
-    			float: left;
-			}
-			.isShot{
-				background: yellow;
-			}
-			.hasShip{
-				background: red;
-			}
-			.currentGame{
-				color: yellow;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="css/battleships.css">
 	</head>
 	<body>
 		<div class="gamesList"></div>
@@ -55,14 +13,14 @@
 			</div>
 			<div class="board"></div>
 		</div>
-		<script src="ship.js"></script>
-		<script src="harbor.js"></script>
-		<script src="square.js"></script>
-		<script src="board.js"></script>
-		<script src="gameListItem.js"></script>
-		<script src="gameList.js"></script>
-		<script src="ajaxHelper.js"></script>
-		<script src="game.js"></script>
-		<script src="battleShips.js"></script>
+		<script src="js/ship.js"></script>
+		<script src="js/harbor.js"></script>
+		<script src="js/square.js"></script>
+		<script src="js/board.js"></script>
+		<script src="js/gameListItem.js"></script>
+		<script src="js/gameList.js"></script>
+		<script src="js/ajaxHelper.js"></script>
+		<script src="js/game.js"></script>
+		<script src="js/battleShips.js"></script>
 	</body>
 </html>

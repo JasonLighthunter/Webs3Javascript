@@ -12,7 +12,7 @@ function GameListItem(listItem, gameList) {
 
   self.createGameListItem = function () {
     var gameListItemDiv = $('<button>');
-    gameListItemDiv.addClass('gameListItem ' + self.id);
+    gameListItemDiv.addClass('gameListItem');
     gameListItemDiv.text('ID: ' + self.id + ' status: ' + self.status + ' opponent: ' + self.enemyName);
     gameListItemDiv.on('click', function () {
       $('.gameListItem').removeClass('currentGame');
@@ -29,14 +29,11 @@ function GameListItem(listItem, gameList) {
           self.game.loadGame();
         } else {
           alert('not your turn.');
-          $('.gameListItem').removeClass('currentGame');
         }
         break;
       case 'done':
         var msg;
         if (self.gameJSON.youWon) {
-          var sound = new Audio("music/HoorayYay.wav");
-          sound.play();
           msg = 'won';
         } else {
           msg = 'lost';
