@@ -12,7 +12,7 @@ function GameListItem(listItem, gameList) {
 
   self.createGameListItem = function () {
     var gameListItemDiv = $('<button>');
-    gameListItemDiv.addClass('gameListItem');
+    gameListItemDiv.addClass('gameListItem ' + self.id);
     gameListItemDiv.text('ID: ' + self.id + ' status: ' + self.status + ' opponent: ' + self.enemyName);
     gameListItemDiv.on('click', function () {
       $('.gameListItem').removeClass('currentGame');
@@ -29,6 +29,7 @@ function GameListItem(listItem, gameList) {
           self.game.loadGame();
         } else {
           alert('not your turn.');
+          $('.gameListItem').removeClass('currentGame');
         }
         break;
       case 'done':

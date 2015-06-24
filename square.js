@@ -1,6 +1,3 @@
-/*global
-  confirm, alert, location
-*/
 function Square(xCor, yCor, game) {
   var self = this;
   self.x = xCor;
@@ -16,14 +13,10 @@ function Square(xCor, yCor, game) {
     squareDiv.addClass(classes);
     squareDiv.on('click', function () {
       if (self.status === "started") {
-        if (confirm('Do you want to Shoot?')) {
-          self.shoot(self.x, self.y);
-        }
+        self.shoot(self.x, self.y);
       } else if (self.status === "setup") {
-        if(confirm('Do you want to place a ship here?')) {
-          self.game.harbor.placeShip(self.x, self.y);
-        }
-      };
+        self.game.harbor.placeShip(self.x, self.y);
+      }
     });
     return squareDiv;
   };
