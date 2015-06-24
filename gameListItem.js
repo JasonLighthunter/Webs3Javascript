@@ -34,6 +34,8 @@ function GameListItem(listItem, gameList) {
       case 'done':
         var msg;
         if (self.gameJSON.youWon) {
+          var sound = new Audio("music/HoorayYay.wav");
+          sound.play();
           msg = 'won';
         } else {
           msg = 'lost';
