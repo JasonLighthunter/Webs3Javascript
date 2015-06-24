@@ -37,6 +37,7 @@ function GameList(helper) {
   self.drawRefreshButton = function (root) {
     var refreshButton = $('<button>');
     refreshButton.text('refresh');
+    refreshButton.addClass('refresh')
     refreshButton.on('click', function () {
       refresh(root);
     });

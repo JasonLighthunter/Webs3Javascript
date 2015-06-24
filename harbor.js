@@ -35,6 +35,8 @@ function Harbor(helper, board) {
         if (counter === 0) {
           self.aHelp.postGameByID(self.board.game.id, self.fillShipsJSON(self.placedShips));
           self.selectedShip = null;
+          $('.refresh').click();
+          $('.' + self.board.game.id).click();
         }
       }
     }
