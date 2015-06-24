@@ -1,11 +1,16 @@
+body {
+	background-color: black;
+}
 .gamesList, .harbor{
+	margin-top: 10px;
+	margin-right: 50px;
 	float: left;
 	width: 220px;
-	background: black;
+	background: grey;
 	font-weight: bold;
 }
 .gameListItem{
-	background: green;
+	background: lightgrey;
 }
 button{
 	margin-top: 3px;
@@ -27,15 +32,15 @@ button{
 	height: 47px;
 	margin-top: 3px;
 	margin-left: 3px;
-	background: blue;
+	background: darkgray;
 	float: left;
 }
 .isShot{
-	background: yellow;
+	background: grey;
 }
 .hasShip{
 	background: red;
 }
 .currentGame{
-	color: yellow;
+	color: black;
 }
