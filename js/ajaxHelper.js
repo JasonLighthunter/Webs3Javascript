@@ -94,13 +94,13 @@ function AjaxHelper() {
       async: false
     });
   };
-  self.postShot = function (gameID, shotJSON) {
+  self.postShot = function (gameID, shotJSON, callback) {
     $.ajax({
       type: 'POST',
       url: self.server + '/games/' + gameID + '/shots?token=' + self.token,
       data: shotJSON,
       global: false,
-      async: false,
+
     })
       .done(function (json) {
         var sound;
@@ -116,6 +116,8 @@ function AjaxHelper() {
           alert(json);
         }
         console.log('test');
+
+        callback(json);
       });
   };
 }

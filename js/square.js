@@ -26,7 +26,11 @@ function Square(xCor, yCor, game) {
       "x": x,
       "y": y
     };
-    self.aHelp.postShot(self.gameID, shot);
-    self.game.loadGame();
+    self.aHelp.postShot(self.gameID, shot, function(json){
+
+        self.game.loadGame();
+
+    });
+
   };
 }
